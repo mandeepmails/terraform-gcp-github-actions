@@ -1,9 +1,9 @@
 resource "google_storage_bucket" "bucket1-mandy-rocks" {
-  name          = "21jun2024-jhadi-also-rocks"
-  location      = "US"
+  name     = "21jun2024-jhadi-bucket2"
+  location = "us-central1-c"
   # force_destroy = true
 
-  # uniform_bucket_level_access = true
+  uniform_bucket_level_access = true
 
   # website {
   #   main_page_suffix = "index.html"
