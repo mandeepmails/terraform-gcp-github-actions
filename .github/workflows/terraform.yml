@@ -79,18 +79,24 @@ jobs:
       run: terraform init
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+        GCP_REGION: ${{ secrets.GCP_REGION }}
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt -check
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+        GCP_REGION: ${{ secrets.GCP_REGION }}
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+        GCP_REGION: ${{ secrets.GCP_REGION }}
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
@@ -99,3 +105,5 @@ jobs:
       run: terraform apply -auto-approve -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+        GCP_REGION: ${{ secrets.GCP_REGION }}
