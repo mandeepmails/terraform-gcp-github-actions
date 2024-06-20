@@ -11,13 +11,13 @@ resource "google_storage_bucket" "raw" {
 */
 
 resource "google_service_account" "default" {
-  account_id   = "userthree@learningsokay.site"
-  display_name = "userthree"
+  account_id   = "user33"
+  display_name = "user33"
 }
 
 resource "google_compute_instance" "myvm1" {
   name         = "jhadi-instance-01"
-  machine_type = "n2-standard-1"
+  machine_type = "e2-micro"
   zone         = "us-central1-c"
 
   tags = ["finance", "dept"]
@@ -32,12 +32,13 @@ resource "google_compute_instance" "myvm1" {
   }
 
   // Local SSD disk
-  scratch_disk {
-    interface = "NVME"
-  }
+  # scratch_disk {
+  #   interface = "NVME"
+  # }
 
   network_interface {
-    network = "default"
+    network = "vpc1-lk"
+    subnetwork = "central1-subnet"
 
     access_config {
       // Ephemeral public IP
@@ -52,7 +53,7 @@ resource "google_compute_instance" "myvm1" {
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    email  = userthree
+    email  = "user33@learningsokay.site"
     scopes = ["cloud-platform"]
   }
 }
