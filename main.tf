@@ -1,6 +1,6 @@
 resource "google_storage_bucket" "bucket1-mandy-rocks" {
   name     = "21jun2024-jhadi-bucket2"
-  location = "us-central1-c"
+  location = "us"
   # force_destroy = true
 
   uniform_bucket_level_access = true
